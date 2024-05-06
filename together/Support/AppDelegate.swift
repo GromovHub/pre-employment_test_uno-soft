@@ -1,8 +1,7 @@
 //
-//  AppDelegate.swift
-//  together
+//Project name: together
 //
-//  Created by Vitaly Gromov on 17.04.2024.
+//Copyright © Gromov V.O., 2024
 //
 
 import UIKit

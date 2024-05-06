@@ -1,22 +1,30 @@
 //
-//  SceneDelegate.swift
-//  together
+//Project name: together
 //
-//  Created by Vitaly Gromov on 17.04.2024.
+//Copyright © Gromov V.O., 2024
 //
 
 import UIKit
+import SwiftUI
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
-
-
+    
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
-        // Use this method to optionally configure and attach the UIWindow `window` to the provided UIWindowScene `scene`.
-        // If using a storyboard, the `window` property will automatically be initialized and attached to the scene.
-        // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
-        guard let _ = (scene as? UIWindowScene) else { return }
+        
+        let window = UIWindow(windowScene: (scene as! UIWindowScene))
+        
+        let rootNavigation = UINavigationController()
+        let coordinator = MainCoordinator(rootNavigationController: rootNavigation)
+        
+        window.rootViewController = rootNavigation
+        
+        self.window = window
+        
+        self.window?.makeKeyAndVisible()
+        coordinator.start()
+        
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {
