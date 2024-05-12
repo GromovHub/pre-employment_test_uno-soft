@@ -6,6 +6,6 @@
 * Данные лежат в CoreData
 * Ниже очень условная схема
 
-![diagram](https://github.com/GromovHub/together/blob/main/together.png?raw=true)
+![diagram](https://github.com/GromovHub/pre-employment_test_uno-soft/blob/main/together.jpg)
 
 Я могу отправить оригинал задачи личным сообщением, если вам это интересно
