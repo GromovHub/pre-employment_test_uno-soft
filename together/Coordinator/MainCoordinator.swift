@@ -23,6 +23,8 @@ class MainCoordinator {
     init(rootNavigationController: UINavigationController) {
         self.rootNavigationController = rootNavigationController
         setupDependency()
+//        settingsVC.overrideUserInterfaceStyle = .dark
+//        mainScreenView.overrideUserInterfaceStyle = .dark
     }
     
     // MARK: - Dependency
@@ -37,7 +39,9 @@ class MainCoordinator {
 // MARK: - Coordiantor Init
 extension MainCoordinator: CoordinatorProtocol {
     func start() {
+        self.rootNavigationController.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.label]
         self.rootNavigationController.navigationBar.prefersLargeTitles = true
+        
         self.rootNavigationController.pushViewController(mainScreenView, animated: true)
     }
 }

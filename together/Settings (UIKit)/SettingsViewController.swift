@@ -16,15 +16,29 @@ class SettingsViewController: UITableViewController {
         setupViews()
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+    }
+    
     override func viewWillAppear(_ animated: Bool) {
         // view asks for data if ready or will be updated
         viewModelDelegate?.getDataFromViewModelToSettings()
+        setupTheme()
     }
+}
 
+// MARK: - Setup Views
+
+extension SettingsViewController {
+    
     private func setupViews() {
-        view.backgroundColor = .white
+        view.backgroundColor = .systemBackground
         setupNavigationBar()
         prepareCells()
+    }
+    
+    private func setupTheme() {
+        self.navigationController?.overrideUserInterfaceStyle = localDataForCells.darkThemeIsOn ? .dark : .light
+        tableView.reloadData()
     }
     
     private func setupNavigationBar() {
@@ -38,11 +52,11 @@ class SettingsViewController: UITableViewController {
         tableView.register(DarkThemeCell.self, forCellReuseIdentifier: DarkThemeCell.id)
     }
     
-    func updateViews(appSettings: AppSettings) {
-        self.localDataForCells = LocalDataForCellsInSettingsModel(url: appSettings.url ?? "updateViews() error", uploadIsOn: appSettings.measureUpload, darkThemeIsOn: appSettings.darkTheme)
+    // method to update current view from the ViewModel
+    func updateViews(with: AppSettings) {
+        self.localDataForCells = LocalDataForCellsInSettingsModel(url: with.url ?? "updateViews() error", uploadIsOn: with.measureUpload, darkThemeIsOn: with.darkTheme)
         tableView.reloadData()
     }
-    
 }
 
 // MARK: - TableView Configuration
@@ -109,6 +123,7 @@ extension SettingsViewController: URLCellProtocol, UploadSpeedCellProtocol, Dark
     
     func darkThemeChanged(darkIsOn: Bool) {
         localDataForCells.darkThemeIsOn = darkIsOn
+        setupTheme()
         viewModelDelegate?.sendDataFromSettingsToViewModel(localSettings: self.localDataForCells)
     }
 }

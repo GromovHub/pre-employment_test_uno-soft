@@ -15,7 +15,6 @@
 		D047D5452BCF70AB00A9CD42 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D047D5432BCF70AB00A9CD42 /* LaunchScreen.storyboard */; };
 		D047D54D2BCF71E800A9CD42 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D047D54C2BCF71E800A9CD42 /* MainView.swift */; };
 		D047D54F2BD55C6900A9CD42 /* MainCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D047D54E2BD55C6900A9CD42 /* MainCoordinator.swift */; };
-		D047D5572BD55DFA00A9CD42 /* MainViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D047D5562BD55DFA00A9CD42 /* MainViewCell.swift */; };
 		D047D5592BD55E3A00A9CD42 /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D047D5582BD55E3A00A9CD42 /* ViewModel.swift */; };
 		D047D55B2BD573E500A9CD42 /* SwiftUIViewHostingWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = D047D55A2BD573E500A9CD42 /* SwiftUIViewHostingWrapper.swift */; };
 		D047D55F2BD6038500A9CD42 /* MeasureSpeedService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D047D55E2BD6038500A9CD42 /* MeasureSpeedService.swift */; };
@@ -57,7 +56,6 @@
 		D047D5462BCF70AB00A9CD42 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D047D54C2BCF71E800A9CD42 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		D047D54E2BD55C6900A9CD42 /* MainCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCoordinator.swift; sourceTree = "<group>"; };
-		D047D5562BD55DFA00A9CD42 /* MainViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewCell.swift; sourceTree = "<group>"; };
 		D047D5582BD55E3A00A9CD42 /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
 		D047D55A2BD573E500A9CD42 /* SwiftUIViewHostingWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUIViewHostingWrapper.swift; sourceTree = "<group>"; };
 		D047D55E2BD6038500A9CD42 /* MeasureSpeedService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeasureSpeedService.swift; sourceTree = "<group>"; };
@@ -134,7 +132,6 @@
 			isa = PBXGroup;
 			children = (
 				D047D54C2BCF71E800A9CD42 /* MainView.swift */,
-				D047D5562BD55DFA00A9CD42 /* MainViewCell.swift */,
 				D047D55A2BD573E500A9CD42 /* SwiftUIViewHostingWrapper.swift */,
 			);
 			path = "Main Screen (SwiftUI)";
@@ -212,9 +209,9 @@
 		D09BABA22BE86BDB008CDEB5 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
+				D0A20E882BE87837002EA56D /* UrlForRequestCell.swift */,
 				D09BABA32BE86BEF008CDEB5 /* DarkThemeCell.swift */,
 				D0A20E862BE877F1002EA56D /* UploadSpeedCell.swift */,
-				D0A20E882BE87837002EA56D /* UrlForRequestCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -330,7 +327,6 @@
 				D09BABA12BE62528008CDEB5 /* LocalDataForCellsInSettingsModel.swift in Sources */,
 				D047D57B2BD8AE0C00A9CD42 /* AppSettings+CoreDataClass.swift in Sources */,
 				D047D53A2BCF70AA00A9CD42 /* SettingsViewController.swift in Sources */,
-				D047D5572BD55DFA00A9CD42 /* MainViewCell.swift in Sources */,
 				D09BABA42BE86BEF008CDEB5 /* DarkThemeCell.swift in Sources */,
 				D047D54D2BCF71E800A9CD42 /* MainView.swift in Sources */,
 				D047D5862BDB4FB700A9CD42 /* ViewModelToCoordinatorProtocol.swift in Sources */,

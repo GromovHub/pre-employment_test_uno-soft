@@ -12,29 +12,30 @@ struct MainView: View {
     @State var navigationTitle: String = "Speed Test"
     
     var body: some View {
-            VStack {
-                Spacer(minLength: 30)
-                HStack(alignment: .top, spacing: 50) {
-                    SpeedView(name: "Download")
+        VStack {
+            Spacer(minLength: 30)
+            HStack(alignment: .top, spacing: 50) {
+                SpeedView(name: "Download")
+                if VM.appSettings.measureUpload {
                     SpeedView(name: "Upload")
                 }
-                Spacer(minLength: 30)
-                Button("Start") {
-                    //run vm.measure
-                    print("Start")
-                }
-                Spacer(minLength: 30)
             }
-            Button("History", systemImage: "gobackward") {
-                print("History tapped")
-                VM.coordinatorDelegate?.show(screen: .mainScreen)
+            Spacer(minLength: 30)
+            Button("Start") {
+                //run vm.measure
+                print("Start measuring")
             }
-            .navigationTitle(navigationTitle)
-            .toolbar(content: {
-                Button("Settings") {
-                    VM.coordinatorDelegate?.show(screen: .settingsScreen)
-                }
-            })
+            Spacer(minLength: 30)
+        }
+        Button("History", systemImage: "gobackward") {
+            print("History tapped")
+        }
+        .navigationTitle(navigationTitle)
+        .toolbar(content: {
+            Button("Settings") {
+                VM.coordinatorDelegate?.show(screen: .settingsScreen)
+            }
+        })
     }
 }
 

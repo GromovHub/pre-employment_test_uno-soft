@@ -20,6 +20,9 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         window.rootViewController = rootNavigation
         
+        // load last theme
+        window.overrideUserInterfaceStyle = UserDefaults.standard.bool(forKey: "initTheme") ? .dark : .light
+        
         self.window = window
         
         self.window?.makeKeyAndVisible()

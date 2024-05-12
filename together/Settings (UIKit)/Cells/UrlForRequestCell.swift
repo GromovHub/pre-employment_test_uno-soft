@@ -11,6 +11,7 @@ import UIKit
 
 // MARK: - URL Cell
 
+// cell can handle the input and then return the clear value to the ViewController via this ptotocol
 protocol URLCellProtocol: AnyObject {
     func userEndEditing(url: String)
 }
@@ -40,6 +41,7 @@ final class UrlForRequestCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
+    // we can adjust the cell using this func
     func configure(with url: String) {
             textField.text = url
         }

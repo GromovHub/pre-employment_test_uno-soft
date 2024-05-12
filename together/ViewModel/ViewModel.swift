@@ -17,6 +17,7 @@ protocol SettingsToViewModelProtocol: AnyObject {
 
 final class ViewModel: ObservableObject {
     
+    // MARK: - Current ViewModel manages multiple views through this property
     var views: [UIViewController] = []
     
     var coordinatorDelegate: ViewModelToCoordinatorProtocol?
@@ -24,39 +25,37 @@ final class ViewModel: ObservableObject {
     let coreDataService = CoreDataService()
     let measureSpeedDervice = MeasureSpeedService()
     
+    // MARK: - persistent settings from CoreData
     @Published var appSettings: AppSettings
     
-    @Published var items = [1,2,3]
-
-
-
     init() {
+        // update local data from persistent container
         self.appSettings = coreDataService.fetchSettings()
     }
     
     private func sendAppSettingsToViews() {
         // main screen
+        // main screen handle settings with @Published var appSettings: AppSettings
         
         // settings screen
         guard let settingsScreen = views[1] as? SettingsViewController else { return }
-        settingsScreen.updateViews(appSettings: appSettings)
-    }
-    
-    
-    func addNewItem() {
-        self.items.append(Int.random(in: 100...100000))
+        settingsScreen.updateViews(with: appSettings)
     }
 }
 
 extension ViewModel: SettingsToViewModelProtocol {
     
     func sendDataFromSettingsToViewModel(localSettings: LocalDataForCellsInSettingsModel) {
-        // spdate Coredata settings Object
+        // update Coredata settings Object
         appSettings.url = localSettings.url
         appSettings.measureUpload = localSettings.uploadIsOn
         appSettings.darkTheme = localSettings.darkThemeIsOn
         // and save context
         coreDataService.saveContext()
+        // also save to the user defaults
+        UserDefaults.standard.set(appSettings.darkTheme, forKey: "initTheme")
+        // and update local settings from persistent container
+        self.appSettings = coreDataService.fetchSettings()
     }
     
     // view asks for data if ready or will be updated

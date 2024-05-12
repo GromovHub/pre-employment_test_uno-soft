@@ -10,6 +10,7 @@ import SwiftUI
 import CoreData
 
 class CoreDataService {
+    
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     
 //    @Environment(\.managedObjectContext)
