@@ -116,12 +116,12 @@
 		D047D5342BCF70AA00A9CD42 /* together */ = {
 			isa = PBXGroup;
 			children = (
-				D047D55D2BD6034700A9CD42 /* CoreDataService */,
-				D047D55C2BD6033900A9CD42 /* UseCases */,
-				D047D5512BD55D4A00A9CD42 /* Settings (UIKit) */,
 				D047D5502BD55D2C00A9CD42 /* Main Screen (SwiftUI) */,
+				D047D5512BD55D4A00A9CD42 /* Settings (UIKit) */,
 				D047D5542BD55DAB00A9CD42 /* Coordinator */,
 				D047D5552BD55DBC00A9CD42 /* ViewModel */,
+				D047D55D2BD6034700A9CD42 /* CoreDataService */,
+				D047D55C2BD6033900A9CD42 /* UseCases */,
 				D047D5532BD55D9200A9CD42 /* Support */,
 				D047D5462BCF70AB00A9CD42 /* Info.plist */,
 			);

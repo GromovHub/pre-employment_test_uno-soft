@@ -14,21 +14,22 @@ struct MainView: View {
     var body: some View {
         VStack {
             Spacer(minLength: 30)
-            HStack(alignment: .top, spacing: 50) {
-                SpeedView(name: "Download")
-                if VM.appSettings.measureUpload {
-                    SpeedView(name: "Upload")
-                }
+                HStack(alignment: .top, spacing: 50) {
+                    SpeedView(name: "Download", speed: $VM.downloadSpeed)
+                    if VM.appSettings.measureUpload {
+                        SpeedView(name: "Upload", speed: $VM.uploadSpeed)
+                    }
             }
+            
             Spacer(minLength: 30)
             Button("Start") {
-                //run vm.measure
+                VM.getDownloadSpeed()
+                if VM.appSettings.measureUpload {
+                    VM.getUploadSpeed()
+                }
                 print("Start measuring")
             }
             Spacer(minLength: 30)
-        }
-        Button("History", systemImage: "gobackward") {
-            print("History tapped")
         }
         .navigationTitle(navigationTitle)
         .toolbar(content: {
@@ -40,8 +41,8 @@ struct MainView: View {
 }
 
 struct SpeedView: View {
-    @State var name: String
-    @State var speed: String = "---"
+    var name: String
+    @Binding var speed: String
     var body: some View {
         VStack(alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/, spacing: /*@START_MENU_TOKEN@*/nil/*@END_MENU_TOKEN@*/) {
             Text(verbatim: name)

@@ -28,18 +28,18 @@ final class togetherTests: XCTestCase {
     
     func testDownloadSpeed() throws {
         let x = MeasureSpeedService()
-            x.measureDownloadSpeed(serverURL: "https://google.com") { speed in
-                print("Download speed ", speed)
-            }
+        x.measureDownloadSpeed(url: "https://google.com") { speed in
+            print("Download speed XC", speed)
+        }
         RunLoop.main.run(until: .now + 5)
     }
     
     func testUploadSpeed() throws {
         let x = MeasureSpeedService()
-        x.measureUploadSpeed(serverURL: "https://google.com", dataSize: 1000) { speed in
-            print("Upload speed ", speed)
+        x.measureUploadSpeed(url: "https://google.com") { speed in
+            print("Uownload speed XC", speed)
         }
-        RunLoop.main.run(until: .now + 5)
+        RunLoop.main.run(until: .now + 10)
     }
 
     func testPerformanceExample() throws {

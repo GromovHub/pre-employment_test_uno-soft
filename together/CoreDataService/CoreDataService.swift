@@ -30,7 +30,7 @@ class CoreDataService {
             result = try context.fetch(AppSettings.fetchRequest())
             if result.isEmpty {
                 let newSettings = AppSettings(context: self.context)
-                newSettings.url = "https://www.google.com"
+                newSettings.url = "https://www.mapsofworld.com/world-map.pdf"
                 newSettings.measureUpload = false
                 newSettings.darkTheme = false
                 result.append(newSettings)

@@ -17,15 +17,21 @@ protocol SettingsToViewModelProtocol: AnyObject {
 
 final class ViewModel: ObservableObject {
     
-    // MARK: - Current ViewModel manages multiple views through this property
+    // current ViewModel manages multiple views through this property
     var views: [UIViewController] = []
     
+    // properties for speed measurement results
+    @Published var downloadSpeed: String = "---"
+    @Published var uploadSpeed: String = "---"
+    
+    // coordinator dependency
     var coordinatorDelegate: ViewModelToCoordinatorProtocol?
     
-    let coreDataService = CoreDataService()
-    let measureSpeedDervice = MeasureSpeedService()
+    // services
+    private let coreDataService = CoreDataService()
+    private let measureSpeedService = MeasureSpeedService()
     
-    // MARK: - persistent settings from CoreData
+    // persistent settings from CoreData
     @Published var appSettings: AppSettings
     
     init() {
@@ -40,6 +46,32 @@ final class ViewModel: ObservableObject {
         // settings screen
         guard let settingsScreen = views[1] as? SettingsViewController else { return }
         settingsScreen.updateViews(with: appSettings)
+    }
+}
+
+// MARK: - Networking
+
+extension ViewModel {
+    func getDownloadSpeed() {
+        self.downloadSpeed = "counting"
+        measureSpeedService.measureDownloadSpeed(url: appSettings.url!) { [weak self] speed in
+            guard let self = self else { print("no self"); return}
+            // set a new value in the main serial queue
+            DispatchQueue.main.async {
+                self.downloadSpeed = speed
+            }
+        }
+    }
+    
+    func getUploadSpeed() {
+        self.uploadSpeed = "counting"
+        measureSpeedService.measureUploadSpeed(url: appSettings.url!) { [weak self] speed in
+            guard let self = self else { print("no self"); return}
+            // set a new value in the main serial queue
+            DispatchQueue.main.async {
+                self.uploadSpeed = speed
+            }
+        }
     }
 }
 
